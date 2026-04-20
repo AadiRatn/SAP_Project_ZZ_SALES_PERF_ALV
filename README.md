@@ -241,7 +241,23 @@ traffic light icons, subtotals per sales rep, and a grand total row.
 
 ---
 
-## Future Improvements
+## ⚙️ Code Execution Flow (Architecture)
+
+For reviewers looking at the ABAP source code, the application logic follows a strict, modular procedural flow:
+
+1. **Initialization (`INITIALIZATION`)**: Text symbols for the selection screen are loaded.
+2. **Selection Screen (`AT SELECTION-SCREEN`)**: User inputs date ranges, organizational filters, and display toggles (Open vs. Completed).
+3. **Data Fetching (`PERFORM fetch_data`)**: A single optimized `SELECT` statement joins VBAK, VBAP, KNA1, and VBUK into an internal table (`gt_sales`).
+4. **Data Processing (`PERFORM process_data`)**: Loops through the fetched records to assign traffic light statuses (1/2/3) and determine ALV row colour codes (C710/C610/C310/C110) based on the net value. Subtotals are accumulated.
+5. **ALV Preparation (`PERFORM display_alv`)**:
+   - The Field Catalogue (`gt_fcat`) is built.
+   - Layout parameters (`gs_layout`) are set (Zebra, Auto-width, Exception fields).
+   - Sort criteria are defined to inherently group by Sales Representative.
+6. **Screen Rendering (`CALL SCREEN 100`)**: The Custom Container is instantiated, the OOP `CL_GUI_ALV_GRID` is bound to it, and custom GUI Status events (Toolbar, Double-Click to VA03, Email) are registered via the `lcl_event_handler` class.
+
+---
+
+## 🔮 Future Improvements
 
 | # | Enhancement               | Description                                                      |
 |---|---------------------------|------------------------------------------------------------------|
