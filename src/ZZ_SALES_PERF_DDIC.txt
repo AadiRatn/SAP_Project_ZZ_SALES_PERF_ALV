@@ -1,0 +1,38 @@
+*&---------------------------------------------------------------------*
+*& Data Dictionary Object : ZZ_SALES_PERF (Structure)
+*& Description            : Output structure for Sales Performance ALV
+*& Used in               : ZZ_SALES_PERF_ALV (Field Catalog)
+*&---------------------------------------------------------------------*
+*
+* Define this structure in SE11 (ABAP Dictionary):
+*
+* Object Type : Structure
+* Object Name : ZZ_SALES_PERF
+*
+* Components:
+*----------------------------------------------------------------------*
+* | Field     | Type   | Data Elem.    | Length | Description         |
+* |-----------|--------|---------------|--------|---------------------|
+* | VBELN     | CHAR   | VBELN_VA      | 10     | Sales Order         |
+* | AUDAT     | DATS   | AUDAT         | 8      | Order Date          |
+* | VKORG     | CHAR   | VKORG         | 4      | Sales Org           |
+* | KUNNR     | CHAR   | KUNNR         | 10     | Customer No.        |
+* | NAME1     | CHAR   | NAME1_GP      | 35     | Customer Name       |
+* | MATNR     | CHAR   | MATNR         | 18     | Material Number     |
+* | ARKTX     | CHAR   | ARKTX         | 40     | Item Description    |
+* | KWMENG    | QUAN   | KWMENG        | 13     | Order Quantity      |
+* | MEINS     | UNIT   | MEINS         | 3      | Unit of Measure     |
+* | NETPR     | CURR   | NETPR         | 12     | Net Price           |
+* | NETWR     | CURR   | NETWR_AP      | 16     | Net Value           |
+* | WAERK     | CUKY   | WAERK         | 5      | Currency            |
+* | ERNAM     | CHAR   | ERNAM         | 12     | Created By          |
+* | GBSTK     | CHAR   | GBSTK         | 1      | Overall Status      |
+* | LFSTK     | CHAR   | LFSTK         | 1      | Delivery Status     |
+* | FKSTK     | CHAR   | FKSTK         | 1      | Billing Status      |
+* | LIGHT     | CHAR   | —             | 1      | Traffic Light       |
+* | ROWCOLOR  | CHAR   | —             | 4      | Row Color Code      |
+*----------------------------------------------------------------------*
+*
+* Enhancement Category: Can be enhanced (character-type)
+* Delivery class      : A (Application data)
+*----------------------------------------------------------------------*
